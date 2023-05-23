@@ -1,20 +1,25 @@
-import css from './FilterByName.module.css';
 import PropTypes from 'prop-types';
+import css from './FilterByName.module.css';
+
 export const FilterByName = ({ filter, onChangeInput }) => {
-  return (
-    <>
+  
+  
+  
+  
+    return (
+    
       <label className={css.label}>
         Find contacts by name
         <br />
         <input
-          className={css.input}
-          onChange={onChangeInput}
-          value={filter}
           type="text"
           name="filter"
+          className={css.input}
+          value={filter}
+          onChange={onChangeInput}
         />
       </label>
-    </>
+    
   );
 };
 
@@ -22,3 +27,4 @@ FilterByName.propTypes = {
   filter: PropTypes.string.isRequired,
   onChangeInput: PropTypes.func.isRequired,
 };
+

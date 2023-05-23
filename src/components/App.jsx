@@ -16,8 +16,8 @@ export class App extends Component {
     filter: '',
   };
 
-  onChangeInput = evt => {
-    const { name, value } = evt.currentTarget;
+  onChangeInput = e => {
+    const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
 
