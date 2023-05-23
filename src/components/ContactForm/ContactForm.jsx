@@ -2,7 +2,6 @@ import { Component } from 'react';
 import css from './ContactForm.module.css';
 import PropTypes from 'prop-types';
 
-
 export class ContactForm extends Component {
   state = {
     name: '',
@@ -15,7 +14,21 @@ export class ContactForm extends Component {
 
   onChangeInput = e => {
     const { name, value } = e.currentTarget;
-    this.setState({ [name]: value });
+
+    if (name === 'number') {
+      const formattedNumber = value
+        .replace(/[^0-9-]/g, '')
+        .replace(/(-{2,})/g, '-')
+        .replace(/(^-|-$)/g, '')
+        .replace(/(-)/g, '')
+        .match(/.{1,3}/g)
+        .join('-')
+        .trim();
+
+      this.setState({ [name]: formattedNumber });
+    } else {
+      this.setState({ [name]: value });
+    }
   };
 
   render() {

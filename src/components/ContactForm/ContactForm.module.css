@@ -11,6 +11,13 @@
 .input {
   margin-top: 10px;
   margin-bottom: 8px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+.input:hover,
+.input:focus {
+  border: 2px solid rgb(68, 153, 223);
 }
 
 .button {
@@ -22,5 +29,5 @@
 }
 
 .button:hover {
-  background: rgb(240, 240, 240);
+  background: rgb(68, 153, 223);
 }
