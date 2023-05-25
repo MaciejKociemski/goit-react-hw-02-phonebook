@@ -67,7 +67,6 @@ export class App extends Component {
           delContact={this.delContact}
           contacts={this.filterContactsByName()}
         />
-       
       </div>
     );
   }
