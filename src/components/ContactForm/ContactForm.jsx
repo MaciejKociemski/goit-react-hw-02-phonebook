@@ -15,20 +15,20 @@ export class ContactForm extends Component {
   onChangeInput = e => {
     const { name, value } = e.currentTarget;
 
-    if (name === 'number') {
-      const formattedNumber = value
+    
+    const formattedValue = name === 'number'
+      ? value
         .replace(/[^0-9-]/g, '')
         .replace(/(-{2,})/g, '-')
         .replace(/(^-|-$)/g, '')
         .replace(/(-)/g, '')
         .match(/.{1,3}/g)
         .join('-')
-        .trim();
+        .trim()
+      : value;
 
-      this.setState({ [name]: formattedNumber });
-    } else {
-      this.setState({ [name]: value });
-    }
+      this.setState({ [name]: formattedValue });
+  
   };
 
   render() {
