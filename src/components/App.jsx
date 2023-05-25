@@ -22,26 +22,24 @@ export class App extends Component {
   };
 
   addContact = ({ name, number }) => {
-    if (
-      this.state.contacts.find(
-        value => value.name.toLowerCase() === name.toLowerCase()
-      )
-    ) {
-      alert(`${name} is already in contacts`);
-    } else {
-      this.setState(oldState => {
-        const list = [...oldState.contacts];
-        list.push({
-          id: nanoid(),
-          name: name,
-          number: number,
+    const contactExists = this.state.contacts.find(
+      value => value.name.toLowerCase() === name.toLowerCase()
+    );
+
+    contactExists
+      ? alert(`${name} is already in contacts`)
+      : this.setState(oldState => {
+          const list = [...oldState.contacts];
+          list.push({
+            id: nanoid(),
+            name: name,
+            number: number,
+          });
+          return { contacts: list };
         });
-        return { contacts: list };
-      });
-    }
   };
 
-  filter = () => {
+  filterContactsByName = () => {
     const { contacts, filter } = this.state;
     const filteredContacts = contacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
@@ -65,7 +63,11 @@ export class App extends Component {
           filter={this.state.filter}
           onChangeInput={this.onChangeInput}
         />
-        <ContactList delContact={this.delContact} contacts={this.filter()} />
+        <ContactList
+          delContact={this.delContact}
+          contacts={this.filterContactsByName()}
+        />
+       
       </div>
     );
   }
