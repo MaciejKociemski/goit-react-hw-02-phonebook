@@ -23,7 +23,7 @@ export class App extends Component {
 
   addContact = ({ name, number }) => {
     if (
-      this.state.contacts.some(
+      this.state.contacts.find(
         value => value.name.toLowerCase() === name.toLowerCase()
       )
     ) {
