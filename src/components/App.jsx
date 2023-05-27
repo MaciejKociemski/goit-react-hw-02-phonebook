@@ -16,7 +16,7 @@ export class App extends Component {
     filter: '',
   };
 
-  onChangeInput = e => {
+  handleInputChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
@@ -47,7 +47,7 @@ export class App extends Component {
     return filteredContacts;
   };
 
-  delContact = id => {
+  deleteContact = id => {
     const { contacts } = this.state;
     const filtered = contacts.filter(item => item.id !== id);
     this.setState({ contacts: filtered });
@@ -57,14 +57,14 @@ export class App extends Component {
     return (
       <div className={css.container}>
         <h1>Phonebook</h1>
-        <ContactForm addContact={this.addContact} />
+        <ContactForm onAddContact={this.addContact} />
         <h2>Contacts</h2>
         <FilterByName
           filter={this.state.filter}
-          onChangeInput={this.onChangeInput}
+          onChangeInput={this.handleInputChange}
         />
         <ContactList
-          delContact={this.delContact}
+          onContactDelete={this.deleteContact}
           contacts={this.filterContactsByName()}
         />
       </div>
