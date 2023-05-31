@@ -36,7 +36,7 @@ export class ContactForm extends Component {
         className={css.form}
         onSubmit={e => {
           e.preventDefault();
-          this.props.addContact(this.state);
+          this.props.onAddContact(this.state);
           this.resetForm();
         }}
       >
